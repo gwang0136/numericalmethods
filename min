@@ -1,0 +1,95 @@
+# @author Gene Wang
+# @version 29 August 2017
+# Defines functions that calculate certain floating point 
+# "special" numbers, including:
+# Epsilon: the largest floating point number such that
+#       1 + eps = 1
+# Min: the smallest positive floating point number calculated
+#      using Python and this computer
+# Max: the largest possible floating point number calculated
+#      using Python and this computer
+# Infinity: the positive value of infinity
+
+# This function calculates the value of epsilon,
+# which is the largest floating point number such 
+# that 1 + eps = 1. It achieves this goal by starting
+# with an eps value of 1, then incrementally halving
+# this value until it achieves the goal of 1 + eps = 1.
+# @return the value of eps
+#
+def eps():
+    
+    eps = 1
+    
+    while(1 + eps != 1):
+        
+        eps /= 2
+        
+    return(eps)
+
+# This function calculates the smallest positive
+# floating point number possible on this computer.
+# It achieves this goal by starting with a value of 1,
+# then incrementally halving this value. Each time the
+# value is halved, the previous value is also stored.
+# When the value rounds off and is "equal" to zero,
+# the value prior to the "zero" value is returned, as
+# it would be the smallest possible positive floating point number.
+# @return the value of min
+#
+def min():
+    
+    val = 1
+    
+    while(val > 0):
+        
+        prev = val
+        
+        val /= 2
+        
+    return(prev)
+
+# This function calculates the largest positive
+# floating point number possible on this computer.
+# It achieves this goal by starting with a value of 1,
+# then incrementally multiplying this value by a factor
+# of "1.1". Each time the value is increased, the previous
+# value is also stored. When the value finally cannot be
+# increased any further, the value prior to the "infinity" value
+# is returned, as it would be the largest possible floating point number.
+# @return the value of max
+#
+def max():
+    
+    val = 1
+    
+    while(val != (val*1.1)):
+        prev = val
+        val *= 1.1
+        
+    return(prev)
+
+# This function calculates the positive infinity
+# value of floating point numbers by starting
+# with a value of 1, then incrementally multiplying
+# this value by a factor of "1.1". When the value
+# cannot be increased any further, it is returned, as
+# this value is the positive infinity floating point number.
+# @return the value of positive infinity
+#
+def infinity():
+    
+    val = 1
+    
+    while(val != (val*1.1)):
+        
+        val *= 1.1
+    
+    return(val)
+
+# Code segment that prints out all four calculated
+# values along with labels that describe each value
+print("Eps: " + str(eps()))
+print("Min: " + str(min()))
+print("Max: " + str(max()))
+print("Infinity: " + str(infinity()))
